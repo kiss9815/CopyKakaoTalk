@@ -2,7 +2,6 @@ package com.juntcompany.copykakaotalk;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 
 /**
@@ -24,7 +23,7 @@ public class PropertyManager {
     private static final String USER_NAME = "user_name";
 
     private PropertyManager() {
-        Context context = MyApplication.getContext();
+        Context context = CopyKaKaoTalk.getContext();
         mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         mEditor = mPrefs.edit();
     }

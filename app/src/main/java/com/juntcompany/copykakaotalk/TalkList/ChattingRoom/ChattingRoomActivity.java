@@ -3,6 +3,8 @@ package com.juntcompany.copykakaotalk.TalkList.ChattingRoom;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +19,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.juntcompany.copykakaotalk.R;
+
+import java.util.Date;
+
 
 public class ChattingRoomActivity extends AppCompatActivity {
 
@@ -51,7 +56,7 @@ public class ChattingRoomActivity extends AppCompatActivity {
         String message = intent.getStringExtra(INTENT_ROOM_TITLE);
         int profile = intent.getIntExtra(INTENT_ROOM_PICTURE, 0);
         setTitle(message);
-
+        final Handler mHandler = new Handler(Looper.getMainLooper());
         Button btn = (Button)findViewById(R.id.btn_send);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,17 +64,23 @@ public class ChattingRoomActivity extends AppCompatActivity {
                 SendData sd = new SendData();
 
                 sd.message = edit_input.getText().toString();
+                sd.date = new Date().toString();
                 mAdapter.add(sd);
 
 
-                ReceiveData rd = new ReceiveData();
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ReceiveData rd = new ReceiveData();
+                        rd.image_profile = getResources().getDrawable(R.drawable.friend);
+                        rd.date = new Date().toString();
+                        rd.message = edit_input.getText().toString();
+                        mAdapter.add(rd);
+                        edit_input.setText("");
+                    }
+                }, 2000);
 
 
-                rd.image_profile = getResources().getDrawable(R.drawable.friend);
-
-                rd.message = edit_input.getText().toString();
-                mAdapter.add(rd);
-                 edit_input.setText("");
             }
         });
 

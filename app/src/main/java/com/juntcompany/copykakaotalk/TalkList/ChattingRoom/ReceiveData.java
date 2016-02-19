@@ -9,5 +9,6 @@ import android.graphics.drawable.Drawable;
 public class ReceiveData implements ChattingRoomData{
 
     String message;
+    String date;
     Drawable image_profile;
 }

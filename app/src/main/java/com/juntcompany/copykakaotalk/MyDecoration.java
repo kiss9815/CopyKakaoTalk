@@ -17,11 +17,11 @@ public class MyDecoration extends RecyclerView.ItemDecoration {
 
     int[] ATTR = {android.R.attr.listDivider};
 
-    public static final int HORIZONTAL_LIST = LinearLayoutManager.HORIZONTAL;
+    public static final int HORIZONTAL_LIST = 0;
 
-    public static final int VERTICAL_LIST = LinearLayoutManager.VERTICAL;
+    public static final int VERTICAL_LIST = 1;
 
-    public static final int STAGGERED_VERTICAL_LIST = StaggeredGridLayoutManager.VERTICAL;
+    public static final int STAGGERED_VERTICAL_LIST = 2;
 
 
     private Drawable mDivider;

@@ -6,7 +6,7 @@ import android.content.Context;
 /**
  * Created by EOM on 2016-02-14.
  */
-public class MyApplication extends Application {
+public class CopyKaKaoTalk extends Application {
     private static Context context;
 
 
